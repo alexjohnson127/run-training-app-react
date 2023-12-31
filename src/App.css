@@ -40,3 +40,26 @@
 .read-the-docs {
   color: #888;
 }
+
+.day{
+  border: black solid 2px;
+  border-radius: 10px;
+  padding: 5px;
+  margin: 5px;
+  position: relative;
+}
+
+
+.week{
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin: 15px;
+  align-content: space-around;
+}
+
+.month{
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+}

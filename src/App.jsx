@@ -1,33 +1,47 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import Day from './components/Day'
+import Week from './components/Week'
 
 function App() {
   const [count, setCount] = useState(0)
 
+  let tempoArr = [" x 1200m @ Tempo"," x Mile @ Tempo", "Mile Tempo Run"]
+  let v02Arr = [" x 800m @ Vo2Max", " x 2 min @ Vo2Max", "x 3 min @ Vo2Max", " x 1000m @ Vo2Max", " x 1200m @ Vo2Max"]
+  let restArr = ["with 1 min rest", "with 2 min rest", "with 3 min rest"]
+
+  let noDayOff = [.1,.14,.1,.14,.1,.25,.15]
+  let oneDayOff = [.14,.14,.12,.16,.14,.28,0]
+  let twoDaysOff = [.15, .2, 0, .15, .2, .3, 0]
+
+  let currentDate = new Date()
+  let daysTillStart = 0
+
+  if (currentDate.getDay() > 1){
+    daysTillStart = currentDate.getDay() - 1
+  }
+  else if(currentDate.getDay() < 1){
+    daysTillStart = 1
+  }
+  console.log(currentDate)
+  
+  let weeksOfPlan = 8
+  let plan = []
+  for (let i = 0; i < weeksOfPlan; i++){
+    plan.push(
+      <Week 
+        weekNum = {i}
+        startDate = {currentDate}
+        daysTillStart = {daysTillStart}
+        />
+    )
+  }
+
   return (
     <>
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        {plan}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
