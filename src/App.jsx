@@ -23,16 +23,24 @@ function App() {
   else if(currentDate.getDay() < 1){
     daysTillStart = 1
   }
-  console.log(currentDate)
+
   
   let weeksOfPlan = 8
   let plan = []
+  let startMileage = 40
+  let endMileage = 60
+
   for (let i = 0; i < weeksOfPlan; i++){
     plan.push(
       <Week 
         weekNum = {i}
+        totalWeeks = {weeksOfPlan}
         startDate = {currentDate}
         daysTillStart = {daysTillStart}
+        startMileage = {startMileage}
+        endMileage = {endMileage}
+        weekPlan = {oneDayOff}
+        key = {Date.now() * Math.random()}
         />
     )
   }
