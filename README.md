@@ -1,8 +1,21 @@
-# React + Vite
+# Run Training App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project will create a training plan for a user based on form input. Goal is to have it adjust to various needs and goals for a given user. 
 
-Currently, two official plugins are available:
+Key Features:
+-Aesthetically pleasing form
+-Aesthetically pleasing calendar
+-Mobile friendly
+-Total weekly mileage calculated and displayed for each week on calendar
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Base functionality to allow for user to select:
+-How many days off per week they want
+-Which days they want off each week
+-How long they want the plan to be (minimum 6 weeks, maximum 30 weeks)
+-Desired weekly mileage
+-Goal race (or for fitness)
+
+Additional future functionality:
+-Edit each day to select different workouts
+-Pace calculator to help user identify correct training paces
+-Instead feedback on generated plan (user can identify that plan is too easy or difficult and receive a better fitting plan)
