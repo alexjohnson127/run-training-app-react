@@ -2,9 +2,34 @@ import { useState } from 'react'
 import './App.css'
 import Day from './components/Day'
 import Week from './components/Week'
+import UserInfo from './components/UserInfo'
 
 function App() {
   const [count, setCount] = useState(0)
+
+  const [userData, setUserData] = useState(
+    {
+      raceDistance:"",
+      startingMileage:40,
+      endingMileage:50,
+      numberOfWeeks:8,
+      daysOffPerWeek:1,
+      workouts: false,
+      currentPr: "00:00:00",
+      formSubmitted: false
+    }
+  )
+
+  function handleChange(event){
+    const {name, value} = event.target 
+
+    setUserData(prev => {
+      return {
+        ...prev,
+        [name]:value
+      }
+    })
+  }
 
   let tempoArr = [" x 1200m @ Tempo"," x Mile @ Tempo", "Mile Tempo Run"]
   let v02Arr = [" x 800m @ Vo2Max", " x 2 min @ Vo2Max", "x 3 min @ Vo2Max", " x 1000m @ Vo2Max", " x 1200m @ Vo2Max"]
@@ -13,6 +38,22 @@ function App() {
   let noDayOff = [.1,.14,.1,.14,.1,.25,.15]
   let oneDayOff = [.14,.14,.12,.16,.14,.28,0]
   let twoDaysOff = [.15, .2, 0, .15, .2, .3, 0]
+  let chosenPlan = oneDayOff
+
+  switch(userData.daysOffPerWeek){
+    case '0': 
+      chosenPlan = noDayOff
+      break
+    case '1':
+      chosenPlan = oneDayOff
+      break
+    case '2':
+      chosenPlan = twoDaysOff
+      break
+    default:
+      chosenPlan = oneDayOff
+  }
+  console.log(userData)
 
   let currentDate = new Date()
   let daysTillStart = 0
@@ -30,16 +71,16 @@ function App() {
   let startMileage = 40
   let endMileage = 60
 
-  for (let i = 0; i < weeksOfPlan; i++){
+  for (let i = 0; i < Number(userData.numberOfWeeks); i++){
     plan.push(
       <Week 
         weekNum = {i}
-        totalWeeks = {weeksOfPlan}
+        totalWeeks = {Number(userData.numberOfWeeks)}
         startDate = {currentDate}
         daysTillStart = {daysTillStart}
-        startMileage = {startMileage}
-        endMileage = {endMileage}
-        weekPlan = {oneDayOff}
+        startMileage = {Number(userData.startingMileage)}
+        endMileage = {Number(userData.endingMileage)}
+        weekPlan = {chosenPlan}
         key = {Date.now() * Math.random()}
         />
     )
@@ -48,6 +89,10 @@ function App() {
   return (
     <>
       <div>
+        <UserInfo 
+          userData = {userData}
+          handleChange = {handleChange}
+        />
         {plan}
       </div>
     </>
