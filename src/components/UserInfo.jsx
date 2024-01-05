@@ -7,6 +7,7 @@ function UserInfo(props){
 
     return (
         <form onSubmit={handleSubmit}>
+            <label for="raceDistance">Select Race Distance:</label>
             <select 
                 id="raceDistance"
                 value={props.userData.raceDistance}
@@ -20,20 +21,25 @@ function UserInfo(props){
                 <option value="Half-Marathon">Half-Marathon</option>
                 <option value="Marathon">Marathon</option>
             </select>
+            <label for="startingMileage">Starting Mileage:</label>
             <input 
                 type="number"
                 value={props.userData.startingMileage}
                 onChange={props.handleChange}
                 name="startingMileage"
                 placeholder="Current Weekly Mileage"
+                id="startingMileage"
             />
+            <label for="endingMileage">Goal Mileage:</label>
             <input 
                 type="number" 
+                id="endingMileage"
                 value={props.userData.endingMileage}
                 onChange={props.handleChange}
                 name="endingMileage"
                 placeholder="Goal Weekly Mileage"
             />
+            <label for="numberOfWeeks">Number of Weeks:</label>
             <input 
                 type="number" 
                 value={props.userData.numberOfWeeks}
@@ -41,6 +47,7 @@ function UserInfo(props){
                 onChange={props.handleChange}
                 placeholder="Length of Plan (Weeks)"
             />
+            <label for="daysOffPerWeek">Days off per week:</label>
             <input 
                 type="number" 
                 value={props.userData.daysOffPerWeek}
@@ -48,7 +55,7 @@ function UserInfo(props){
                 onChange={props.handleChange}
                 placeholder="Days Off Per Week"
                 min="0"
-                max="2"
+                max="3"
             />
 
         </form>

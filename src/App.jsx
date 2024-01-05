@@ -38,6 +38,7 @@ function App() {
   let noDayOff = [.1,.14,.1,.14,.1,.25,.15]
   let oneDayOff = [.14,.14,.12,.16,.14,.28,0]
   let twoDaysOff = [.15, .2, 0, .15, .2, .3, 0]
+  let threeDaysOff = [.25, 0, .15, .2, 0, .4, 0]
   let chosenPlan = oneDayOff
 
   switch(userData.daysOffPerWeek){
@@ -49,6 +50,9 @@ function App() {
       break
     case '2':
       chosenPlan = twoDaysOff
+      break
+    case '3':
+      chosenPlan = threeDaysOff
       break
     default:
       chosenPlan = oneDayOff
