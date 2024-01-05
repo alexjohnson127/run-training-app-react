@@ -1,13 +1,9 @@
 
 function UserInfo(props){
 
-    function handleSubmit(event){
-        event.preventDefault()
-    }
-
     return (
-        <form onSubmit={handleSubmit}>
-            <label for="raceDistance">Select Race Distance:</label>
+        <form onSubmit={props.handleSubmit}>
+            <label htmlFor="raceDistance">Select Race Distance:</label>
             <select 
                 id="raceDistance"
                 value={props.userData.raceDistance}
@@ -21,7 +17,7 @@ function UserInfo(props){
                 <option value="Half-Marathon">Half-Marathon</option>
                 <option value="Marathon">Marathon</option>
             </select>
-            <label for="startingMileage">Starting Mileage:</label>
+            <label htmlFor="startingMileage">Starting Mileage:</label>
             <input 
                 type="number"
                 value={props.userData.startingMileage}
@@ -30,7 +26,7 @@ function UserInfo(props){
                 placeholder="Current Weekly Mileage"
                 id="startingMileage"
             />
-            <label for="endingMileage">Goal Mileage:</label>
+            <label htmlFor="endingMileage">Goal Mileage:</label>
             <input 
                 type="number" 
                 id="endingMileage"
@@ -39,7 +35,7 @@ function UserInfo(props){
                 name="endingMileage"
                 placeholder="Goal Weekly Mileage"
             />
-            <label for="numberOfWeeks">Number of Weeks:</label>
+            <label htmlFor="numberOfWeeks">Number of Weeks:</label>
             <input 
                 type="number" 
                 value={props.userData.numberOfWeeks}
@@ -47,7 +43,7 @@ function UserInfo(props){
                 onChange={props.handleChange}
                 placeholder="Length of Plan (Weeks)"
             />
-            <label for="daysOffPerWeek">Days off per week:</label>
+            <label htmlFor="daysOffPerWeek">Days off per week:</label>
             <input 
                 type="number" 
                 value={props.userData.daysOffPerWeek}
@@ -57,6 +53,8 @@ function UserInfo(props){
                 min="0"
                 max="3"
             />
+            <br></br>
+            <button id="submit">Submit</button>
 
         </form>
     )

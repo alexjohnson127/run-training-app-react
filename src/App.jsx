@@ -3,6 +3,7 @@ import './App.css'
 import Day from './components/Day'
 import Week from './components/Week'
 import UserInfo from './components/UserInfo'
+import Navbar from './components/Navbar'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -10,8 +11,8 @@ function App() {
   const [userData, setUserData] = useState(
     {
       raceDistance:"",
-      startingMileage:40,
-      endingMileage:50,
+      startingMileage:30,
+      endingMileage:40,
       numberOfWeeks:8,
       daysOffPerWeek:1,
       workouts: false,
@@ -27,6 +28,16 @@ function App() {
       return {
         ...prev,
         [name]:value
+      }
+    })
+  }
+
+  function handleSubmit(event){
+    event.preventDefault()
+    setUserData(prev => {
+      return {
+        ...prev,
+        formSubmitted: true
       }
     })
   }
@@ -93,11 +104,16 @@ function App() {
   return (
     <>
       <div>
+        <Navbar />
         <UserInfo 
           userData = {userData}
           handleChange = {handleChange}
+          handleSubmit = {handleSubmit}
         />
-        {plan}
+        {userData.formSubmitted && <div>
+          {plan}
+        </div>}
+        
       </div>
     </>
   )
