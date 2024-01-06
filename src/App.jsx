@@ -6,7 +6,7 @@ import UserInfo from './components/UserInfo'
 import Navbar from './components/Navbar'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [editData, setEditData] = useState(true)
 
   const [userData, setUserData] = useState(
     {
@@ -30,6 +30,10 @@ function App() {
         [name]:value
       }
     })
+  }
+
+  function toggleEdit(){
+    setEditData(prev => !prev)
   }
 
   function handleSubmit(event){
@@ -103,13 +107,16 @@ function App() {
 
   return (
     <>
-      <div>
+      <div className='main-app'>
         <Navbar />
-        <UserInfo 
+        <div className='spacer-div'></div>
+        {userData.formSubmitted && <button onClick={toggleEdit}>Edit Entries</button>}
+        {editData && <UserInfo 
           userData = {userData}
           handleChange = {handleChange}
           handleSubmit = {handleSubmit}
-        />
+        />}
+        
         {userData.formSubmitted && <div>
           {plan}
         </div>}

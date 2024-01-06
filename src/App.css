@@ -52,6 +52,7 @@
 
 .week{
   width: 100%;
+  position: relative;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   margin: 15px;
@@ -76,4 +77,63 @@ form{
   border: black solid 2px;
   padding: 15px;
   border-radius: 5%;
+  max-width: 200px;
+}
+
+.navbar{
+  border-bottom: 3px solid black;
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  top: 5px;
+  left: 5px;
+  height: 5%;
+  padding: 10px;
+  margin: 10px;
+  width: 95%;
+  min-height: 20px;
+  
+}
+
+.navbar a {
+  float: left;
+  display: block;
+  padding: 15px;
+}
+.navbar img{
+  width: 40px;
+  height: auto;
+  display: block;  
+}
+
+.main-app{
+  width: 95%;
+}
+.navbar-logo{
+  display: flex;
+}
+
+.logo-name{
+  display: flex;
+}
+
+.logo-name h2{
+  color: black;
+  font-style: italic;
+}
+
+.navbar-pages a{
+  color: black;
+}
+
+input{
+  width: 100%;
+}
+
+.spacer-div{
+  position: relative;
+  height: 5%;
+  width: 100%;
+  min-height: 50px;
 }
