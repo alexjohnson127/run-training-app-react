@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,  useEffect } from "react";
 import Day from "./Day";
 
 function Week(props){
@@ -7,6 +7,7 @@ function Week(props){
     let monthsOfYear = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
     let workoutArr = []
     let weekNumber = props.weekNum
+    let weeklyDistance = 0
     let currentWeekMileage = props.startMileage + (props.endMileage - props.startMileage) * (props.weekNum / (props.totalWeeks - 1))
     
     for (let i = 0; i < 7; i++){
@@ -15,12 +16,16 @@ function Week(props){
         let dayOfMonth = tempDate.getDate()
         let dailyDistance = Math.round(props.weekPlan[i] * currentWeekMileage)
         let year = tempDate.getFullYear()
+        //props.updateDailyInfo(dayOfMonth, dailyDistance, daysOfWeek[(i+1) % 7])
+
+        weeklyDistance += dailyDistance
 
         workoutArr.push(
             <Day
                 dayOfWeek={daysOfWeek[(i + 1) % 7]}
                 date={monthsOfYear[months] + " " + dayOfMonth}
                 workout={dailyDistance + " miles"}
+                totalWeeklyDistance={weeklyDistance}
                 key={months * 100000 + dayOfMonth * 1000 + year}
             />
         )

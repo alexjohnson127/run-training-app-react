@@ -42,6 +42,7 @@ function UserInfo(props){
                 name="numberOfWeeks"
                 onChange={props.handleChange}
                 placeholder="Length of Plan (Weeks)"
+                id="numberOfWeeks"
             />
             <label htmlFor="daysOffPerWeek">Days off per week:</label>
             <input 
@@ -52,6 +53,7 @@ function UserInfo(props){
                 placeholder="Days Off Per Week"
                 min="0"
                 max="3"
+                id="daysOffPerWeek"
             />
             <br></br>
             <button id="submit">Submit</button>

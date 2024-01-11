@@ -7,6 +7,7 @@ import Navbar from './components/Navbar'
 
 function App() {
   const [editData, setEditData] = useState(true)
+  const [dailyInfo, setDailyInfo] = useState([])
 
   const [userData, setUserData] = useState(
     {
@@ -20,6 +21,20 @@ function App() {
       formSubmitted: false
     }
   )
+  
+  /** Need to figure out how to pass function requiring parameters down to Week component to allow state to be managed
+  function updateDailyInfo(dateDMY, dailyDistance, dayOfTheWeek){
+    setDailyInfo(prev => {
+      return [...prev,
+        {
+          day: dateDMY,
+          distance: dailyDistance,
+          weekday: dayOfTheWeek
+        }
+      ]
+    })
+  }
+  **/
 
   function handleChange(event){
     const {name, value} = event.target 
@@ -32,12 +47,27 @@ function App() {
     })
   }
 
+  /** 
+  const updateDailyInfo = (dateDMY, dailyDistance, dayOfTheWeek) => {
+    setDailyInfo(prev => {
+      return [...prev,
+        {
+          day: dateDMY,
+          distance: dailyDistance,
+          weekday: dayOfTheWeek
+        }
+      ]
+    })
+  }
+  **/
+
   function toggleEdit(){
     setEditData(prev => !prev)
   }
 
   function handleSubmit(event){
     event.preventDefault()
+    setEditData(prev => !prev)
     setUserData(prev => {
       return {
         ...prev,
@@ -100,10 +130,12 @@ function App() {
         startMileage = {Number(userData.startingMileage)}
         endMileage = {Number(userData.endingMileage)}
         weekPlan = {chosenPlan}
+        updateDailyInfo = {setDailyInfo}
         key = {Date.now() * Math.random()}
         />
     )
   }
+  console.log(dailyInfo)
 
   return (
     <>
