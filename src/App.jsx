@@ -16,9 +16,11 @@ function App() {
       endingMileage:40,
       numberOfWeeks:8,
       daysOffPerWeek:1,
-      workouts: false,
+      workoutOption: false,
       currentPr: "00:00:00",
-      formSubmitted: false
+      formSubmitted: false,
+      //dayOff: "",
+      //daysOff: [false, false, false, false, false, false, false]
     }
   )
   
@@ -37,12 +39,12 @@ function App() {
   **/
 
   function handleChange(event){
-    const {name, value} = event.target 
+    const {name, value, type, checked} = event.target 
 
     setUserData(prev => {
       return {
         ...prev,
-        [name]:value
+        [name]: value //type === "checkbox" ? checked : add when checkbox is on form
       }
     })
   }
@@ -105,10 +107,11 @@ function App() {
   console.log(userData)
 
   let currentDate = new Date()
+  console.log(currentDate.getDay())
   let daysTillStart = 0
 
   if (currentDate.getDay() > 1){
-    daysTillStart = currentDate.getDay() - 1
+    daysTillStart = 8 - currentDate.getDay() 
   }
   else if(currentDate.getDay() < 1){
     daysTillStart = 1
@@ -135,7 +138,7 @@ function App() {
         />
     )
   }
-  console.log(dailyInfo)
+  //console.log(dailyInfo)
 
   return (
     <>

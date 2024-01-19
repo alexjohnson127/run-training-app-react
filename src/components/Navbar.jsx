@@ -5,7 +5,7 @@ function Navbar(){
                 <a className="navbar-logo" href="/">
                     <img src="./public/RP.png"></img>
                 </a>
-                <h2>RunPlanner</h2>
+                <h2>Run<span className="planner-text">Planner</span></h2>
             </div>
             
 

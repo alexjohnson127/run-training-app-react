@@ -47,22 +47,31 @@
   padding: 5px;
   margin: 5px;
   position: relative;
+  min-width: 100px;
+  overflow: hidden;
+  width: 10vw;
+ 
+}
+
+.day h2{
+  margin-top: -10px;
+}
+
+.underline{
+  background-color: black;
+  width: 100%;
+  height: 2px;
+  margin-top: -10px;
 }
 
 
 .week{
-  width: 100%;
-  position: relative;
+  
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   margin: 15px;
-  align-content: space-around;
-}
-
-.month{
-  display: flex;
-  flex-direction: column;
-  width: 90%;
+  align-content: space-evenly;
+  
 }
 
 label{
@@ -119,7 +128,7 @@ form{
 }
 
 .logo-name h2{
-  color: black;
+  color: #42cbf5;;
   font-style: italic;
 }
 
@@ -136,4 +145,9 @@ input{
   height: 5%;
   width: 100%;
   min-height: 50px;
+}
+
+.planner-text{
+  font-style: normal;
+  color: black;
 }
