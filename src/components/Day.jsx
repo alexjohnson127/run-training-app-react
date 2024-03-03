@@ -1,6 +1,9 @@
 import { useState } from 'react'
 
 function Day(props){
+
+    
+
     return (
         <div className='day'>
             <h2>{props.dayOfWeek}</h2>
